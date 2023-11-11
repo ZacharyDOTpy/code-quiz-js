@@ -10,8 +10,9 @@
 </head>
 <body>
     <main>
+        <!-- added top bar div w/ button & timer -->
         <div class="top-bar">
-            <button>View Highscores</button>
+            <button id="score-btn">Highscore Screen</button>
             <p>Timer: 00:00</p>
         </div>
         <!-- added start section w/ button -->
@@ -29,10 +30,20 @@
                 <h2>Quiz</h2>
             </header>
             <p>This is a question?</p>
-            <button id="1-correct">1.Answer</button>
+            <button>1.Answer</button>
             <button>2.Answer</button>
             <button>3.Answer</button>
             <button>4.Answer</button>
+        </section>
+        <!-- added end section for user initial submission -->
+        <section class="end">
+            <h2>Quiz Finished!</h2>
+            <p>Your Score: 00</p>
+            <div>
+                <label for="">Enter Initials:</label>
+                <input type="text">
+                <button>Submit</button>
+            </div>
         </section>
         <section class="score">
             <header>
