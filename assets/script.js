@@ -2,6 +2,7 @@
 var startScreen = document.querySelector('.start');
 var quizScreen = document.querySelector('.quiz');
 var scoreScreen = document.querySelector('.score');
+var startButton = document.querySelector('#start-btn');
 
 // added funtions for init|startScreen|quizScreen|scoreScreen
 function showStart() {
@@ -21,6 +22,11 @@ function showScore() {
     quizScreen.style.display = "none";
     scoreScreen.style.display = null;
 }
+
+// added start-btn var and event listener
+startButton.addEventListener('click', function(event) {
+    showQuiz();
+});
 
 function init() {
     showStart();
