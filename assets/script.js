@@ -28,6 +28,13 @@ startButton.addEventListener('click', function(event) {
     showQuiz();
 });
 
+// added event listener to quizScreen buttons
+quizScreen.addEventListener('click', function(event) {
+    if (event.target.matches('button')) {
+        showScore();
+    }
+});
+
 function init() {
     showStart();
 }
