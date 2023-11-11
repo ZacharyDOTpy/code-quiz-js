@@ -1,0 +1,17 @@
+/*css styling for .start */
+.start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*css styling for .quiz buttons  */
+.quiz > button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* moved timer to right side of the screen */
+.top-bar p {
+  float: right;
+  font-weight: 600;
+}

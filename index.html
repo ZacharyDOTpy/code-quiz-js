@@ -6,23 +6,14 @@
     <title>JS Code Quiz</title>
     <!-- added simple css minified -->
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <!-- added css styling for .start -->
-    <style>
-        .start {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    /* added css styling for .quiz buttons  */
-        .quiz > button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <main>
+        <div class="top-bar">
+            <button>View Highscores</button>
+            <p>Timer: 00:00</p>
+        </div>
         <!-- added start section w/ button -->
         <section class="start">
             <header>
@@ -38,7 +29,7 @@
                 <h2>Quiz</h2>
             </header>
             <p>This is a question?</p>
-            <button>1.Answer</button>
+            <button id="1-correct">1.Answer</button>
             <button>2.Answer</button>
             <button>3.Answer</button>
             <button>4.Answer</button>
