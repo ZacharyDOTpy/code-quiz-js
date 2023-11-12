@@ -8,6 +8,9 @@ var startButton = document.querySelector('#start-btn');
 var scoreButton = document.querySelector('#score-btn');
 var submitButton = document.querySelector('#submit-btn');
 
+var questionElement = document.getElementById('questionEl');
+var choicesElement = document.getElementById('choicesEl');
+
 // added questions object array
 var questions = [
     {
