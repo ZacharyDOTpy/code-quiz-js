@@ -29,6 +29,8 @@ function showQuiz() {
     quizScreen.style.display = null;
     endScreen.style.display = "none";
     scoreScreen.style.display = "none";
+    showQuestion1();
+    startTimer();
 }
 
 function showEnd() {
@@ -99,6 +101,86 @@ function startTimer() {
         
     },1000)
 }
+//  created answer variables and functions
+var question1Answer = document.getElementById('correct-answer1');
+var question2Answer = document.getElementById('correct-answer2');
+var question3Answer = document.getElementById('correct-answer3');
+var score = 0;
+
+var q1answer = document.getElementById('question1');
+q1answer.addEventListener('click', userAnswer1);
+var q1AnswerConfirm;
+
+function userAnswer1(event) {
+    event.preventDefault();
+    var answer = event.target;
+    console.log(answer);
+
+    var result = event.target.id;
+
+    if (result === question1Answer.id) {
+        q1AnswerConfirm = "Correct";
+        console.log(q1AnswerConfirm);
+        score = score + 33
+    } else {
+        q1AnswerConfirm = "Wrong";
+        console.log(q1AnswerConfirm);
+        timeLeft = timeLeft - 15;
+    }
+
+    console.log("Score: " + score);
+    showQuestion2();
+};
+
+var q2answer = document.getElementById('question2');
+q2answer.addEventListener('click', userAnswer2);
+var q2AnswerConfirm;
+
+function userAnswer2(event) {
+    event.preventDefault();
+    var answer = event.target;
+    console.log(answer);
+
+    var result = event.target.id;
+
+    if (result === question2Answer.id) {
+        q2AnswerConfirm = "Correct";
+        console.log(q2AnswerConfirm);
+        score = score + 33
+    } else {
+        q2AnswerConfirm = "Wrong";
+        console.log(q2AnswerConfirm);
+        timeLeft = timeLeft - 15;
+    }
+
+    console.log("Score: " + score);
+    showQuestion3();
+};
+
+var q3answer = document.getElementById('question3');
+q3answer.addEventListener('click', userAnswer3);
+var q3AnswerConfirm;
+
+function userAnswer3(event) {
+    event.preventDefault();
+    var answer = event.target;
+    console.log(answer);
+
+    var result = event.target.id;
+
+    if (result === question3Answer.id) {
+        q3AnswerConfirm = "Correct";
+        console.log(q3AnswerConfirm);
+        score = score + 33
+    } else {
+        q3AnswerConfirm = "Wrong";
+        console.log(q3AnswerConfirm);
+        timeLeft = timeLeft - 15;
+    }
+
+    console.log("Score: " + score);
+    showEnd();
+};
 
 function init() {
     showStart();
