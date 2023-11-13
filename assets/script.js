@@ -12,6 +12,9 @@ var startButton = document.querySelector('#start-btn');
 var scoreButton = document.querySelector('#score-btn');
 var submitButton = document.querySelector('#submit-btn');
 
+var countdown = document.querySelector('.timer');
+var timeLeft = 60;
+
 
 // added funtions for init|startScreen|quizScreen|endScreen|scoreScreen
 function showStart() {
@@ -82,6 +85,20 @@ submitButton.addEventListener('click', function(event) {
 scoreButton.addEventListener('click', function(event) {
     showScore();
 });
+
+// created timer function for quiz countdown
+function startTimer() {
+    var interval = setInterval(function() {
+        timeLeft--;
+        countdown.textContent = "Quiz Timer: " + timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(interval);
+            showEnd();
+        }
+        
+    },1000)
+}
 
 function init() {
     showStart();
