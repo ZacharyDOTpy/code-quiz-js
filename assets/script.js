@@ -4,31 +4,14 @@ var quizScreen = document.querySelector('.quiz');
 var endScreen = document.querySelector('.end');
 var scoreScreen = document.querySelector('.score');
 
+var questionOne = document.getElementById('question1');
+var questionTwo = document.getElementById('question2');
+var questionThree = document.getElementById('question3');
+
 var startButton = document.querySelector('#start-btn');
 var scoreButton = document.querySelector('#score-btn');
 var submitButton = document.querySelector('#submit-btn');
 
-var questionElement = document.getElementById('questionEl');
-var choicesElement = document.getElementById('choicesEl');
-
-// added questions object array
-var questions = [
-    {
-        question: "How many moons does Jupiter have?",
-        choices: ["60", "63", "95", "12"],
-        correctAnswer: 2
-    },
-    {
-        question: "Which planet is closest to the Sun?",
-        choices: ["Mercury", "Neptune", "Mars", "Venus"],
-        correctAnswer: 0
-    },
-    {
-        question: "How many gas giants are in our solar system?",
-        choices: ["2", "4", "3", "0"],
-        correctAnswer: 1
-    },
-]
 
 // added funtions for init|startScreen|quizScreen|endScreen|scoreScreen
 function showStart() {
@@ -57,6 +40,25 @@ function showScore() {
     quizScreen.style.display = "none";
     endScreen.style.display = "none";
     scoreScreen.style.display = null;
+}
+
+// display questions
+function showQuestion1() {
+    questionOne.style.display = null;
+    questionTwo.style.display = "none";
+    questionThree.style.display = "none";
+}
+
+function showQuestion2() {
+    questionOne.style.display = "none";
+    questionTwo.style.display = null;
+    questionThree.style.display = "none";
+}
+
+function showQuestion3() {
+    questionOne.style.display = "none";
+    questionTwo.style.display = "none";
+    questionThree.style.display = null;
 }
 
 // added start-btn var and event listener

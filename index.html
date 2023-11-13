@@ -15,6 +15,9 @@
             <button id="score-btn">Highscore Screen</button>
             <p>Timer: 00:00</p>
         </div>
+        
+        
+        
         <!-- added start section w/ button -->
         <section class="start">
             <header>
@@ -24,14 +27,43 @@
             <!-- added id to start button -->
             <button id="start-btn">Start Quiz</button>
         </section>
+        
+        
+        
         <!-- added quiz and score sections and buttons for quiz answers -->
+        <!-- changed answers from buttons to lists -->
         <section class="quiz">
-            <header>
-                <h2>Quiz</h2>
-            </header>
-            <p id="questionEl"></p>
-            <button id="answer-btn">Answer</button>
+            <div id="question1">
+                <h2>How many moons does Jupiter have?</h2>
+                <ul>
+                    <li>60</li>
+                    <li>63</li>
+                    <li id="correct-answer1">95</li>
+                    <li>12</li>
+                </ul>
+            </div>
+            <div id="question2">
+                <h2>Which planet is closest to the Sun?</h2>
+                <ul>
+                    <li id="correct-answer1">Mercury</li>
+                    <li>Neptune</li>
+                    <li>Mars</li>
+                    <li>Venus</li>
+                </ul>
+            </div>
+            <div id="question3">
+                <h2>How many gas giants are in our solar system?</h2>
+                <ul>
+                    <li>2</li>
+                    <li id="correct-answer1">4</li>
+                    <li>3</li>
+                    <li>0</li>
+                </ul>
+            </div>
         </section>
+        
+        
+        
         <!-- added end section for user initial submission -->
         <section class="end">
             <h2>Quiz Finished!</h2>
@@ -42,6 +74,10 @@
                 <button id="submit-btn">Submit</button>
             </div>
         </section>
+        
+        
+        
+        
         <section class="score">
             <header>
                 <h2>Score Screen</h2>
