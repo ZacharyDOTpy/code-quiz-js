@@ -59,3 +59,29 @@ function show(screen) {
 
   document.querySelector('.' + screen).style.display = null;
 };
+
+function quizStart() {
+  index = 0;
+  score = 100;
+  scoreScreen.textContent = 'Score: ' + score;
+
+  show('quiz');
+  displayQuestion();
+  timer = setInterval(decrementScore, 1000, 1);
+};
+
+function displayQuestion() {
+  questionsArea.innerHTML = null;
+
+  var questionElement = document.createElement('p');
+  questionElement.textContent = questions[index].question
+  questionsArea.appendChild(questionElement);
+
+  var answer = questions[index].answers;
+  for (var i = 0; i < answers.length; i++) {
+    var answerElement = document.createElement('button');
+    answerElement.textContent = answer[i];
+    answerElement.setAttribute('style', 'display: block;');
+    questionsArea.appendChild(answerElement);
+  };
+};
