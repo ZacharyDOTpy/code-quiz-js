@@ -1,189 +1,61 @@
-// housekeeping
-var startScreen = document.querySelector('.start');
+var viewScores = document.querySelector('#view-score-screen');
+var displayScore = document.querySelector('#score');
+var feedback = document.querySelector('#feedback');
+
+var strtScreen = document.querySelector('.start');
+var strtBtn = document.querySelector('#start-btn');
+
 var quizScreen = document.querySelector('.quiz');
+var questionsArea = document.querySelector('#questions');
+
 var endScreen = document.querySelector('.end');
+var initialsForm = document.querySelector('#initials');
+var submitBtn = document.querySelector('#submit-btn');
+
 var scoreScreen = document.querySelector('.score');
+var scoreList = document.querySelector('#score-list');
+var clearBtn = document.querySelector('#clear-scores');
+var retryBtn = document.querySelector('#retry-btn');
 
-var questionOne = document.getElementById('question1');
-var questionTwo = document.getElementById('question2');
-var questionThree = document.getElementById('question3');
+var questions = [
+  {
+    "question": "How many moon does Jupiter have?",
+    "answers": ["60", "63", "95", "12"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which planet is closest to the Sun?",
+    "answers": ["Mercury", "Neptune", "Mars", "Venus"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How many gas giants are in our solar system?",
+    "answers": ["2", "4", "3", "0"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How many minutes does it take light to travel from the Sun to Earth?",
+    "answers": ["0", "12", "7", "8"],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How many planets have rings in our solar system?",
+    "answers": ["2", "4", "1", "0"],
+    "correctAnswer": 1
+  },
+];
+var index = 0;
 
-var startButton = document.querySelector('#start-btn');
-var scoreButton = document.querySelector('#score-btn');
-var submitButton = document.querySelector('#submit-btn');
+var score = 100;
+var highscores = [];
+var timer;
 
-var countdown = document.querySelector('.timer');
-var timeLeft = 60;
+// function to display each screen of the program
+function show(screen) {
+  strtScreen.style.display = "none";
+  quizScreen.style.display = "none";
+  endScreen.style.display = "none";
+  scoreScreen.style.display = "none";
 
-
-// added funtions for init|startScreen|quizScreen|endScreen|scoreScreen
-function showStart() {
-    startScreen.style.display = null;
-    quizScreen.style.display = "none";
-    endScreen.style.display = "none";
-    scoreScreen.style.display = "none";
-}
-
-function showQuiz() {
-    startScreen.style.display = "none";
-    quizScreen.style.display = null;
-    endScreen.style.display = "none";
-    scoreScreen.style.display = "none";
-    showQuestion1();
-    startTimer();
-}
-
-function showEnd() {
-    startScreen.style.display = "none";
-    quizScreen.style.display = "none";
-    endScreen.style.display = null;
-    scoreScreen.style.display = "none";
-}
-
-function showScore() {
-    startScreen.style.display = "none";
-    quizScreen.style.display = "none";
-    endScreen.style.display = "none";
-    scoreScreen.style.display = null;
-}
-
-// display questions
-function showQuestion1() {
-    questionOne.style.display = null;
-    questionTwo.style.display = "none";
-    questionThree.style.display = "none";
-}
-
-function showQuestion2() {
-    questionOne.style.display = "none";
-    questionTwo.style.display = null;
-    questionThree.style.display = "none";
-}
-
-function showQuestion3() {
-    questionOne.style.display = "none";
-    questionTwo.style.display = "none";
-    questionThree.style.display = null;
-}
-
-// added start-btn var and event listener
-startButton.addEventListener('click', function(event) {
-    showQuiz();
-});
-
-// added event listener to quizScreen buttons
-quizScreen.addEventListener('click', function(event) {
-    if (event.target.matches('button')) {
-        showEnd();
-    }
-});
-
-// added event listener to endScreen buttons
-submitButton.addEventListener('click', function(event) {
-    showScore();
-});
-
-// added event listener to highscore button
-scoreButton.addEventListener('click', function(event) {
-    showScore();
-});
-
-// created timer function for quiz countdown
-function startTimer() {
-    var interval = setInterval(function() {
-        timeLeft--;
-        countdown.textContent = "Quiz Timer: " + timeLeft;
-
-        if (timeLeft === 0) {
-            clearInterval(interval);
-            showEnd();
-        }
-        
-    },1000)
-}
-//  created answer variables and functions
-var question1Answer = document.getElementById('correct-answer1');
-var question2Answer = document.getElementById('correct-answer2');
-var question3Answer = document.getElementById('correct-answer3');
-var score = 0;
-
-var q1answer = document.getElementById('question1');
-q1answer.addEventListener('click', userAnswer1);
-var q1AnswerConfirm;
-
-function userAnswer1(event) {
-    event.preventDefault();
-    var answer = event.target;
-    console.log(answer);
-
-    var result = event.target.id;
-
-    if (result === question1Answer.id) {
-        q1AnswerConfirm = "Correct";
-        console.log(q1AnswerConfirm);
-        score = score + 33
-    } else {
-        q1AnswerConfirm = "Wrong";
-        console.log(q1AnswerConfirm);
-        timeLeft = timeLeft - 15;
-    }
-
-    console.log("Score: " + score);
-    showQuestion2();
+  document.querySelector('.' + screen).style.display = null;
 };
-
-var q2answer = document.getElementById('question2');
-q2answer.addEventListener('click', userAnswer2);
-var q2AnswerConfirm;
-
-function userAnswer2(event) {
-    event.preventDefault();
-    var answer = event.target;
-    console.log(answer);
-
-    var result = event.target.id;
-
-    if (result === question2Answer.id) {
-        q2AnswerConfirm = "Correct";
-        console.log(q2AnswerConfirm);
-        score = score + 33
-    } else {
-        q2AnswerConfirm = "Wrong";
-        console.log(q2AnswerConfirm);
-        timeLeft = timeLeft - 15;
-    }
-
-    console.log("Score: " + score);
-    showQuestion3();
-};
-
-var q3answer = document.getElementById('question3');
-q3answer.addEventListener('click', userAnswer3);
-var q3AnswerConfirm;
-
-function userAnswer3(event) {
-    event.preventDefault();
-    var answer = event.target;
-    console.log(answer);
-
-    var result = event.target.id;
-
-    if (result === question3Answer.id) {
-        q3AnswerConfirm = "Correct";
-        console.log(q3AnswerConfirm);
-        score = score + 33
-    } else {
-        q3AnswerConfirm = "Wrong";
-        console.log(q3AnswerConfirm);
-        timeLeft = timeLeft - 15;
-    }
-
-    console.log("Score: " + score);
-    showEnd();
-};
-
-function init() {
-    showStart();
-}
-
-init();

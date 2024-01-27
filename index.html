@@ -9,15 +9,12 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+    <!-- added top bar div w/ button & timer -->
+    <div class="header">
+        <button id="view-score-screen">Highscores</button>
+        <p id="score"></p>
+    </div>
     <main>
-        <!-- added top bar div w/ button & timer -->
-        <div class="top-bar">
-            <button id="score-btn">Highscore Screen</button>
-            <p class="timer">Quiz Timer: 60</p>
-        </div>
-        
-        
-        
         <!-- added start section w/ button -->
         <section class="start">
             <header>
@@ -27,62 +24,34 @@
             <!-- added id to start button -->
             <button id="start-btn">Start Quiz</button>
         </section>
-        
-        
-        
         <!-- added quiz and score sections and buttons for quiz answers -->
         <!-- changed answers from buttons to lists -->
         <section class="quiz">
-            <div id="question1">
-                <h2>How many moons does Jupiter have?</h2>
-                <ul id="q1-answer">
-                    <li>60</li>
-                    <li>63</li>
-                    <li id="correct-answer1">95</li>
-                    <li>12</li>
-                </ul>
-            </div>
-            <div id="question2">
-                <h2>Which planet is closest to the Sun?</h2>
-                <ul id="q2-answer">
-                    <li id="correct-answer1">Mercury</li>
-                    <li>Neptune</li>
-                    <li>Mars</li>
-                    <li>Venus</li>
-                </ul>
-            </div>
-            <div id="question3">
-                <h2>How many gas giants are in our solar system?</h2>
-                <ul id="q3-answer">
-                    <li>2</li>
-                    <li id="correct-answer1">4</li>
-                    <li>3</li>
-                    <li>0</li>
-                </ul>
-            </div>
+            <header>
+                <h2>Quiz</h2>
+            </header>
+            <div id="questions"></div>
         </section>
-        
-        
-        
         <!-- added end section for user initial submission -->
         <section class="end">
-            <h2>Quiz Finished!</h2>
-            <p>Your Score: 00</p>
-            <div>
-                <label for="">Enter Initials:</label>
-                <input type="text">
+            <header>
+                <h2>Quiz Finished!</h2>
+            </header>
+            <form>
+                <label for="initials">Enter initials</label>
+                <input id="initials" name="comments">
                 <button id="submit-btn">Submit</button>
-            </div>
+            </form>
         </section>
-        
-        
-        
-        
         <section class="score">
             <header>
                 <h2>Score Screen</h2>
+                <ol id="score-list"></ol>
+                <button id="clear-scores">Clear Scores</button>
+                <button id="retry-btn">Play Again</button>
             </header>
         </section>
+        <p id="feedback"></p>
     </main>
     <!-- linked script.js to html -->
     <script src="./assets/script.js"></script>
