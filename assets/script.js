@@ -60,23 +60,29 @@ function show(screen) {
   document.querySelector('.' + screen).style.display = null;
 };
 
+// start quiz function
 function quizStart() {
+  // resets variables
   index = 0;
   score = 100;
   scoreScreen.textContent = 'Score: ' + score;
 
+  // shows quiz screen with question and starts timer
   show('quiz');
   displayQuestion();
   timer = setInterval(decrementScore, 1000, 1);
 };
 
+// function to display each question
 function displayQuestion() {
   questionsArea.innerHTML = null;
 
+  // appends question from array to questions div
   var questionElement = document.createElement('p');
   questionElement.textContent = questions[index].question
   questionsArea.appendChild(questionElement);
 
+  // appends answers from array to questions div
   var answer = questions[index].answers;
   for (var i = 0; i < answers.length; i++) {
     var answerElement = document.createElement('button');
@@ -85,3 +91,72 @@ function displayQuestion() {
     questionsArea.appendChild(answerElement);
   };
 };
+
+// function to decrease score based on timer
+function decrementScore(value) {
+  score -= value;
+  scoreScreen.textContent = 'Score: ' + score;
+  if (score <= 0) {
+    // clears timer and shows quiz end screen
+    clearInterval(timer);
+    show('end');
+  };
+};
+
+// function the show scores screen
+function renderScores() {
+  scoreList.innerHTML = '';
+
+  // sorts scores from high to low
+  highscores = highscores.sort(function(a, b){return b.score - a.score})
+  // renders new scores with initials
+  for (var i = 0; i < highscores.length; i++) {
+    var highscore = highscores[i];
+
+    var list = document.createElement('li');
+    list.textContent = highscore.initials + ' - ' + highscore.score;
+    list.setAttribute('data-index', i);
+
+    scoreList.appendChild(list);
+  };
+};
+
+// event listener for scores button & stops timer
+viewScores.addEventListener('click', function() {
+  if (timer) {
+    clearInterval(timer);
+  }
+  
+  show('highscores');
+})
+
+// event listener for start quiz button
+strtBtn.addEventListener('click', function() {
+  quizStart();
+})
+
+// event listener for answer buttons
+quizScreen.addEventListener('click', function(event) {
+  if (event.target.matches('button')) {
+    
+    if (event.target.textContent != questions[index]['answers'][questions[index]['correctAnswer']]) {
+      decrementScore(15);
+      feedback.textContent = 'INCORRECT';
+      setTimeout(() => {feedback.textContent = ''}, 1000);
+    } else {
+      feedback.textContent = 'CORRECT';
+      setTimeout(() => {feedback.textContent = ''}, 1000);
+    };
+
+    // displays the next question if there is one
+    index++;
+    if (questions[index]) {
+      displayQuestion();
+      return;
+    };
+
+    // stops timer and shows end screen if no more questions
+    clearInterval(timer);
+    show('end');
+  };
+});
